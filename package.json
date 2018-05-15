@@ -30,7 +30,7 @@
   "homepage": "https://github.com/nfriend/google-translate-xlf#readme",
   "preferGlobal": true,
   "bin": {
-    "translate": "./src/index.js"
+    "translate-xlf": "./src/index.js"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

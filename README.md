@@ -9,7 +9,7 @@ This is a command-line utility.  To install this utility, run:
 npm install -g google-translate-xlf
 ```
 
-This will install the utility globally so that it can be run from any location.  The executable installed by this module is `translate`.
+This will install the utility globally so that it can be run from any location.  The executable installed by this module is `translate-xlf`.
 
 ## Usage
 
@@ -18,19 +18,19 @@ Before you begin, you will need an `.xlf` file to translate! If you are using [A
 Say we have an `.xlf` file named `messages.xlf`.  Let's translate this file from English ("en") to Hindi ("hi") and save the translated file as `messages.hi.xlf`:
 
 ```bash
-translate --in messages.xlf --out messages.hi.xlf --from en --to hi
+translate-xlf --in messages.xlf --out messages.hi.xlf --from en --to hi
 ```
 
 Or, if you don't like typing, you can use the abbreviated versions of the arguments:
 
 ```bash
-translate -i messages.xlf -o messages.hi.xlf -f en -t hi
+translate-xlf -i messages.xlf -o messages.hi.xlf -f en -t hi
 ```
 
 For more usage help, run:
 
 ```bash
-translate help
+translate-xlf help
 ```
 
 ## Caveats
