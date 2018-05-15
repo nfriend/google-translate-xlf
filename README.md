@@ -33,6 +33,14 @@ For more usage help, run:
 translate-xlf help
 ```
 
+By default, a comment is prepended to the output file that looks like this:
+
+```xml
+<!-- Translated on May 15th 2018, 5:01:18 pm by google-translate-xlf: https://github.com/nfriend/google-translate-xlf -->
+```
+
+This behavior can be turned off by passing `--comment false`.
+
 ## Caveats
 
 This utility will **not** attempt to translate complex `<source>` values, like this:

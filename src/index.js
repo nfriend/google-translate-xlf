@@ -7,6 +7,7 @@
 const path = require('path');
 const chalk = require('chalk');
 const bluebird = require('bluebird');
+const moment = require('moment');
 const fs = bluebird.promisifyAll(require('fs'));
 const translate = require('./translate');
 const log = require('./log');
@@ -47,6 +48,14 @@ const argv = require('yargs')
         demand: true,
         describe: 'The language code to translate to',
         type: 'string'
+    })
+    .option('c', {
+        alias: 'comment',
+        demand: false,
+        describe:
+            'Indicates if an XML comment should be prepended to the output file',
+        type: 'boolean',
+        default: true
     }).argv;
 
 // start a timer so that we can
@@ -64,6 +73,15 @@ fs
 
     // write the result to the output file
     .then(output => {
+        // add a comment to the top of the file unless --comment = false
+        if (argv.comment) {
+            const nowString = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+            output =
+                `<!-- Translated on ${nowString} by google-translate-xlf:` +
+                ` https://github.com/nfriend/google-translate-xlf -->\n${output}`;
+        }
+
         return fs.writeFileAsync(path.resolve(argv.out), output);
     })
 

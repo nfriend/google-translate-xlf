@@ -32,12 +32,12 @@ function translate(input, from, to) {
                             // easy - this is the text we want to translate
                             textToTranslate = value[0];
                         } else if (_.isObject(value[0]) && value[0]['_']) {
-                            // if the value of the node is an object with 
+                            // if the value of the node is an object with
                             // an _ property, we want to translate the
                             // value of the _ property.
                             textToTranslate = value[0]['_'];
                         } else {
-                            // the two situations above are the only 
+                            // the two situations above are the only
                             // scenarios handled by this utility
                             throw 'Encountered an unexpected value in a "source" property!: ' +
                                 JSON.stringify(value, null, 4);
@@ -74,7 +74,10 @@ function translate(input, from, to) {
                                 // original <source> element
                                 if (_.isString(value[0])) {
                                     xlfObj['target'] = res.text;
-                                } else if (_.isObject(value[0]) && value[0]['_']) {
+                                } else if (
+                                    _.isObject(value[0]) &&
+                                    value[0]['_']
+                                ) {
                                     xlfObj['target'] = _.cloneDeep(value);
                                     xlfObj['target'][0]['_'] = res.text;
                                 }
@@ -84,7 +87,7 @@ function translate(input, from, to) {
                         }
                     } else if (_.isObject(value) || _.isArray(value)) {
                         // if the value of this project is another
-                        // object or an array, recursively search this 
+                        // object or an array, recursively search this
                         // sub-object for "source" properties
 
                         translateObj(value);
