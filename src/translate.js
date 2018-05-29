@@ -36,14 +36,9 @@ function translate(input, from, to) {
                             // an _ property, we want to translate the
                             // value of the _ property.
                             textToTranslate = value[0]['_'];
-                        } else {
-                            // the two situations above are the only
-                            // scenarios handled by this utility
-                            throw 'Encountered an unexpected value in a "source" property!: ' +
-                                JSON.stringify(value, null, 4);
                         }
 
-                        // translating expressions embedded in curly brackets
+                        // translating complex scenarios
                         // (i.e. {VAR_PLURAL, plural, =0 {just now} etc...})
                         // is not yet supported by this utility.  If we encounter
                         // this, simply create a "target" element that is an exact
