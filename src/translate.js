@@ -44,12 +44,16 @@ function translate(input, from, to) {
                         // this, simply create a "target" element that is an exact
                         // duplicate of the "source" element, so that the users
                         // will at least get the input language's translation.
-                        if (/\{|\}/.test(textToTranslate)) {
+                        if (
+                            _.isNil(textToTranslate) ||
+                            /\{|\}/.test(textToTranslate)
+                        ) {
                             xlfObj['target'] = _.cloneDeep(value);
                         } else {
                             // call the Google Translate endpoint, log the
                             // translation to the console, and replace the
                             // property's value with the translation
+
                             const translatePromise = googleTranslate(
                                 textToTranslate,
                                 {

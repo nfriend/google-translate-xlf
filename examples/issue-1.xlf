@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="ngb.alert.close" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/alert/alert.d.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.previous" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-month" datatype="html">
+        <source>Select month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-year" datatype="html">
+        <source>Select year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first" datatype="html">
+        <source>««</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first-aria" datatype="html">
+        <source>First</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous" datatype="html">
+        <source>«</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous-aria" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next" datatype="html">
+        <source>»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next-aria" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last" datatype="html">
+        <source>»»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last-aria" datatype="html">
+        <source>Last</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.progressbar.value" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
+        <source>Increment hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.HH" datatype="html">
+        <source>HH</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.hours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
+        <source>Decrement hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
+        <source>Increment minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.MM" datatype="html">
+        <source>MM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.minutes" datatype="html">
+        <source>Minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
+        <source>Decrement minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
+        <source>Increment seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.SS" datatype="html">
+        <source>SS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.seconds" datatype="html">
+        <source>Seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
+        <source>Decrement seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.PM" datatype="html">
+        <source>PM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.AM" datatype="html">
+        <source>AM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="846a01c0c56ad9e87443158ef9a95d7b047b2027" datatype="html">
+        <source>Welcome to the United Nations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/header/header.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2a8550dfa6eaae9b7a4b94e741e54e873462d536" datatype="html">
+        <source>United Nations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="026341b93969417add0d5a4b1e11d8dedecf4bad" datatype="html">
+        <source>A-Z Site Index</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34746fb1c7f3d2194d99652bdff89e6e14c9c4f4" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8d6ae9e10215ab874f8cdecacbdc4110d4dc32f0" datatype="html">
+        <source>Copyright </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4b6dbf2d92858e82bcf6ae5dbc8dfb4b29d82ad0" datatype="html">
+        <source>FAQ</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e33c48bfe10ffb6d8518566c810c48da28ea1bff" datatype="html">
+        <source>Fraud Alert</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3d6f1a5ed6f85df2e20697ce5fb0db1baaea6e65" datatype="html">
+        <source>Privacy Notice</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0dd8a3bafea23b5595cfcb897f16acd2cc60cf02" datatype="html">
+        <source>Terms of Use</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/footer/footer.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ea5d23680b5966490604b7dcdc237ff3c5574a14" datatype="html">
+        <source>United Nations Logo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2b6c5b711d207307ce521557d0aaa8e9e37cb46c" datatype="html">
+        <source>Securing our common future, An Agenda for Disarmament</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="675203508e9a31fc0edf0428575037edd61fdc70" datatype="html">
+        <source>Secretary-General António Guterres addresses the General Assembly</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="56fdb6c3bf110b19ad0b07630c3354023c467555" datatype="html">
+        <source>The content of the agenda is available here:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a9eab4de6ebe58c6bfccc0f786f763f2818e7015" datatype="html">
+        <source>PDF Version</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a0843de0a64adcc7ee6a946408b6876cd8abdcae" datatype="html">
+        <source>English</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8293a584b57b870aca184a23bb8039c829acc4cf" datatype="html">
+        <source>French</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="774146bb8ba67a7ac2ea72b71cbcc2b61667abb1" datatype="html">
+        <source>Online version</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a495df51bfc1e8fa5f2fffed456a1efa5f1889c7" datatype="html">
+        <source>eBook Version</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7061809850013efc3da080de451b4fc3d505c70b" datatype="html">
+        <source>Mobi </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e5910f0e7b8807d4e4c4fcd292ade5c0cb19f85d" datatype="html">
+        <source>ePub</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0539547eef83af1fe00429669ccb6ffa43f48a53" datatype="html">
+        <source>The goals:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a2446e88908466384359e313432a10cbb0af55ae" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{action.title}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="62a50fe22287bc1feac08e30878cb492f907bb7e" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{item.title}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="58ff1f5e6417a58e18629ad84be403c0df146e43" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{action.description}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="99decb1f8a0c05b3f81af78dc1c289a0723767ce" datatype="html">
+        <source>The statistics:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="15793f4cbc261bedbc60f7105533dde536a3f42b" datatype="html">
+        <source>Progress</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b78e89a88fd3aad2142a5dd9ee87f60b0df34e7d" datatype="html">
+        <source>Recorded broadcast of the Secretary-General&apos;s speech on his Disarmament Agenda:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">293</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fa075eb55e05d6055114cd879e07257632bfe631" datatype="html">
+        <source>Click </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">300</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="080228b2d344181e6b5a9d6f8b6c77fc55051f62" datatype="html">
+        <source>here </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">300</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="79b6b1f0a77ad1047e3eb7afa914065e667c415e" datatype="html">
+        <source>to read the speech</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">300</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb2e618085699790ecab2704791a6419dfdd94f8" datatype="html">
+        <source>Information for the Media</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">303</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c45d737fcb0063ad6ee70c67d3f68ac9aaf7ba64" datatype="html">
+        <source>For interview requests:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">304</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2b87c24d4e65df343def26948b981d3e2f896366" datatype="html">
+        <source>John Ennis </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">305</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="700738243f75c5d6e779c41335f32e57c76cc6ee" datatype="html">
+        <source>(UN Office for Disarmament Affairs - New York)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">305</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">306</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="763a1da0313e64ce48a2b5ea2c94e304b8944c11" datatype="html">
+        <source>Rebar Jaff </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">306</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c02875c04ea1c2808a289128dafcf36086c85759" datatype="html">
+        <source>Alessandra Vellucci </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">307</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2f282966fd2697562bf8ab8e1980588cc41d399" datatype="html">
+        <source>(UN Information Service - Geneva)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">307</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e51f83cca8da7ab476a462a1ee0255c579322ed8" datatype="html">
+        <source>The Secretary-General explains the thinking behind his disarmament agenda</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">314</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b8658cc306a7924971906b1d95643e824b4e77ef" datatype="html">
+        <source>For more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/main/main.component.html</context>
+          <context context-type="linenumber">326</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -106,5 +106,5 @@ fs
                 argv.in +
                 '!'
         );
-        log('' + err);
+        log('' + err.stack);
     });

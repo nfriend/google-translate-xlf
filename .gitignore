@@ -62,3 +62,5 @@ typings/
 
 # ignore this file that I sometime use while debugging
 temp.json
+
+examples-output
