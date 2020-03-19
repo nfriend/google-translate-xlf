@@ -1,6 +1,8 @@
 # google-translate-xlf
 A command-line utility to automatically translate .xlf translation files using Google Translate
 
+:warning: **I no longer maintain this repository.** Use at your own risk. :warning:
+
 ## Installation
 
 This is a command-line utility.  To install this utility, run:
