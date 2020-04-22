@@ -33,6 +33,7 @@
     "translate-xlf": "./src/index.js"
   },
   "dependencies": {
+    "@vitalets/google-translate-api": "^2.4.0",
     "bluebird": "^3.5.1",
     "chalk": "^2.4.1",
     "google-translate-api": "^2.3.0",

@@ -1,4 +1,5 @@
 const googleTranslate = require('google-translate-api');
+const googleTranslateVitalets = require('@vitalets/google-translate-api');
 const bluebird = require('bluebird');
 const chalk = require('chalk');
 const log = require('./log');
@@ -54,33 +55,47 @@ function translate(input, from, to) {
                             // translation to the console, and replace the
                             // property's value with the translation
 
+                            const translateParams = { from: from, to: to };
                             const translatePromise = googleTranslate(
                                 textToTranslate,
-                                {
-                                    from: from,
-                                    to: to
-                                }
-                            ).then(res => {
-                                log(
-                                    'Translating ' +
+                                translateParams,
+                            )
+                                .catch(() =>
+                                    googleTranslateVitalets(
+                                        textToTranslate,
+                                        translateParams
+                                    )
+                                )
+                                .catch(() =>
+                                    googleTranslateVitalets(
+                                        textToTranslate,
+                                        Object.assign(
+                                            translateParams,
+                                            { client: 'gtx' }
+                                        )
+                                    )
+                                )
+                                .then(res => {
+                                    log(
+                                        'Translating ' +
                                         chalk.yellow(textToTranslate) +
                                         ' to ' +
                                         chalk.green(res.text)
-                                );
+                                    );
 
-                                // update the object with the translation,
-                                // make sure to match the format of the
-                                // original <source> element
-                                if (_.isString(value[0])) {
-                                    xlfObj['target'] = res.text;
-                                } else if (
-                                    _.isObject(value[0]) &&
-                                    value[0]['_']
-                                ) {
-                                    xlfObj['target'] = _.cloneDeep(value);
-                                    xlfObj['target'][0]['_'] = res.text;
-                                }
-                            });
+                                    // update the object with the translation,
+                                    // make sure to match the format of the
+                                    // original <source> element
+                                    if (_.isString(value[0])) {
+                                        xlfObj['target'] = res.text;
+                                    } else if (
+                                        _.isObject(value[0]) &&
+                                        value[0]['_']
+                                    ) {
+                                        xlfObj['target'] = _.cloneDeep(value);
+                                        xlfObj['target'][0]['_'] = res.text;
+                                    }
+                                });
 
                             allPromises.push(translatePromise);
                         }
