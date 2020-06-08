@@ -1,9 +1,13 @@
-const googleTranslate = require('google-translate-api');
+// const googleTranslate = require('google-translate-api');
+const googleTranslate = require('@k3rn31p4nic/google-translate-api');
 const bluebird = require('bluebird');
 const chalk = require('chalk');
 const log = require('./log');
 const xml2js = bluebird.promisifyAll(require('xml2js'));
 const _ = require('lodash');
+
+const xliff = require('xliff');
+var convert = require('xml-js');
 
 /**
  * Translates an .xlf file from one language to another
@@ -12,90 +16,109 @@ const _ = require('lodash');
  * @param {string} to The language code of the output file
  */
 function translate(input, from, to) {
+    const str = input.toString();
+
+    let result = convert.xml2js(str);
+
+    // JUST TEST
+    const source = result.elements[0].elements[0].elements[0].elements[0].elements[0];
+    const target = _.cloneDeep(source);
+    target.name = 'target';
+
+    result.elements[0].elements[0].elements[0].elements[0].elements.push(target)
+
+    console.log(convert.js2xml(result, {
+        spaces: 4
+    }));
+
     return xml2js
-        .parseStringAsync(input)
+        .parseStringAsync(input, {
+            preserveChildrenOrder: true,
+            charsAsChildren: true,
+            explicitChildren: true
+        })
         .then(parsedXlf => {
             const allPromises = [];
 
-            const translateObj = xlfObj => {
-                _.forOwn(xlfObj, (value, key) => {
-                    if (key.trim().toLowerCase() === 'source') {
-                        // if there's a "source" key in this object,
-                        // translate the value (value[0]) of this property
-                        // and add the translation into a
-                        // sibling "target" element
+            // const translateObj = xlfObj => {
+            //     _.forOwn(xlfObj, (value, key) => {
+            //         if (key.trim().toLowerCase() === 'source') {
+            //             // if there's a "source" key in this object,
+            //             // translate the value (value[0]) of this property
+            //             // and add the translation into a
+            //             // sibling "target" element
 
-                        let textToTranslate;
+            //             let textToTranslate;
 
-                        if (_.isString(value[0])) {
-                            // if the value of the node is just a string,
-                            // easy - this is the text we want to translate
-                            textToTranslate = value[0];
-                        } else if (_.isObject(value[0]) && value[0]['_']) {
-                            // if the value of the node is an object with
-                            // an _ property, we want to translate the
-                            // value of the _ property.
-                            textToTranslate = value[0]['_'];
-                        }
+            //             if (_.isString(value[0])) {
+            //                 // if the value of the node is just a string,
+            //                 // easy - this is the text we want to translate
+            //                 textToTranslate = value[0];
+            //             } else if (_.isObject(value[0]) && value[0]['_']) {
+            //                 // if the value of the node is an object with
+            //                 // an _ property, we want to translate the
+            //                 // value of the _ property.
+            //                 textToTranslate = value[0]['_'];
+            //             }
 
-                        // translating complex scenarios
-                        // (i.e. {VAR_PLURAL, plural, =0 {just now} etc...})
-                        // is not yet supported by this utility.  If we encounter
-                        // this, simply create a "target" element that is an exact
-                        // duplicate of the "source" element, so that the users
-                        // will at least get the input language's translation.
-                        if (
-                            _.isNil(textToTranslate) ||
-                            /\{|\}/.test(textToTranslate)
-                        ) {
-                            xlfObj['target'] = _.cloneDeep(value);
-                        } else {
-                            // call the Google Translate endpoint, log the
-                            // translation to the console, and replace the
-                            // property's value with the translation
+            //             // translating complex scenarios
+            //             // (i.e. {VAR_PLURAL, plural, =0 {just now} etc...})
+            //             // is not yet supported by this utility.  If we encounter
+            //             // this, simply create a "target" element that is an exact
+            //             // duplicate of the "source" element, so that the users
+            //             // will at least get the input language's translation.
+            //             if (
+            //                 _.isNil(textToTranslate) ||
+            //                 /\{|\}/.test(textToTranslate)
+            //             ) {
+            //                 xlfObj['target'] = _.cloneDeep(value);
+            //             } else {
+            //                 // call the Google Translate endpoint, log the
+            //                 // translation to the console, and replace the
+            //                 // property's value with the translation
 
-                            const translatePromise = googleTranslate(
-                                textToTranslate,
-                                {
-                                    from: from,
-                                    to: to
-                                }
-                            ).then(res => {
-                                log(
-                                    'Translating ' +
-                                        chalk.yellow(textToTranslate) +
-                                        ' to ' +
-                                        chalk.green(res.text)
-                                );
+            //                 const translatePromise = googleTranslate(
+            //                     textToTranslate,
+            //                     {
+            //                         from: from,
+            //                         to: to
+            //                     }
+            //                 ).then(res => {
+            //                     log(
+            //                         'Translating ' +
+            //                             chalk.yellow(textToTranslate) +
+            //                             ' to ' +
+            //                             chalk.green(res.text)
+            //                     );
 
-                                // update the object with the translation,
-                                // make sure to match the format of the
-                                // original <source> element
-                                if (_.isString(value[0])) {
-                                    xlfObj['target'] = res.text;
-                                } else if (
-                                    _.isObject(value[0]) &&
-                                    value[0]['_']
-                                ) {
-                                    xlfObj['target'] = _.cloneDeep(value);
-                                    xlfObj['target'][0]['_'] = res.text;
-                                }
-                            });
+            //                     // update the object with the translation,
+            //                     // make sure to match the format of the
+            //                     // original <source> element
+            //                     if (_.isString(value[0])) {
+            //                         xlfObj['target'] = res.text;
+            //                     } else if (
+            //                         _.isObject(value[0]) &&
+            //                         value[0]['_']
+            //                     ) {
+            //                         xlfObj['target'] = _.cloneDeep(value);
+            //                         xlfObj['target'][0]['_'] = res.text;
+            //                     }
+            //                 });
 
-                            allPromises.push(translatePromise);
-                        }
-                    } else if (_.isObject(value) || _.isArray(value)) {
-                        // if the value of this project is another
-                        // object or an array, recursively search this
-                        // sub-object for "source" properties
+            //                 allPromises.push(translatePromise);
+            //             }
+            //         } else if (_.isObject(value) || _.isArray(value)) {
+            //             // if the value of this project is another
+            //             // object or an array, recursively search this
+            //             // sub-object for "source" properties
 
-                        translateObj(value);
-                    }
-                });
-            };
+            //             translateObj(value);
+            //         }
+            //     });
+            // };
 
-            // kick off the recursive process
-            translateObj(parsedXlf);
+            // // kick off the recursive process
+            // translateObj(parsedXlf);
 
             // wait until all the translations have finished processing,
             // then return the modified .xlf JSON object
