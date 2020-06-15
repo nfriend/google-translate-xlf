@@ -79,7 +79,7 @@ fs
 
             output =
                 `<!-- Translated on ${nowString} by google-translate-xlf:` +
-                ` https://github.com/nfriend/google-translate-xlf -->\n${output}`;
+                ` https://github.com/chekit/google-translate-xlf -->\n${output}`;
         }
 
         return fs.writeFileAsync(path.resolve(argv.out), output);
@@ -90,11 +90,11 @@ fs
         const endTime = Date.now();
         log(
             chalk.green('✓') +
-                ' Finished translating ' +
-                argv.in +
-                ' in ' +
-                (endTime - startTime) +
-                'ms.'
+            ' Finished translating ' +
+            argv.in +
+            ' in ' +
+            (endTime - startTime) +
+            'ms.'
         );
     })
 
@@ -102,9 +102,9 @@ fs
     .catch(err => {
         log(
             chalk.red('X') +
-                ' Something went wrong while translating ' +
-                argv.in +
-                '!'
+            ' Something went wrong while translating ' +
+            argv.in +
+            '!'
         );
         log('' + err.stack);
     });
