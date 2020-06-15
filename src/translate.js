@@ -1,7 +1,7 @@
 const googleTranslate = require('@k3rn31p4nic/google-translate-api');
 const chalk = require('chalk');
 const log = require('./log');
-const _ = require('lodash');
+const cloneDeep = require('lodash.clonedeep');
 const convert = require('xml-js');
 
 const xliff = require('xliff');
@@ -29,7 +29,7 @@ function translate(input, from, to) {
             const source = elem.elements.find(el => el.name === 'source');
 
             if (source) {
-                const target = _.cloneDeep(source);
+                const target = cloneDeep(source);
                 target.name = 'target';
 
                 toTranslate.push(...target.elements.filter(el => el.type === 'text'))
