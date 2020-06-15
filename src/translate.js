@@ -1,13 +1,10 @@
-// const googleTranslate = require('google-translate-api');
 const googleTranslate = require('@k3rn31p4nic/google-translate-api');
-const bluebird = require('bluebird');
 const chalk = require('chalk');
 const log = require('./log');
-const xml2js = bluebird.promisifyAll(require('xml2js'));
 const _ = require('lodash');
+const convert = require('xml-js');
 
 const xliff = require('xliff');
-var convert = require('xml-js');
 
 /**
  * Translates an .xlf file from one language to another
