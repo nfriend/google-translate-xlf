@@ -1,26 +1,26 @@
 const googleTranslate = require('@k3rn31p4nic/google-translate-api');
 const chalk = require('chalk');
-const log = require('./log');
+const log = require('./helpers/log');
 const cloneDeep = require('lodash.clonedeep');
 const convert = require('xml-js');
 
-const xliff = require('xliff');
-
 /**
  * Translates an .xlf file from one language to another
+ * 
  * @param {string} input The source of the .xlf file, as a string
  * @param {string} from The language code of the input file
  * @param {string} to The language code of the output file
+ * 
+ * @returns {string}
  */
 function translate(input, from, to) {
-    const str = input.toString();
+    const xlfStruct = convert.xml2js(input);
+
     const queue = [];
     const toTranslate = [];
     const allPromises = [];
 
-    let result = convert.xml2js(str);
-
-    queue.push(result);
+    queue.push(xlfStruct);
 
     while (queue.length) {
         const elem = queue.pop();
@@ -46,10 +46,8 @@ function translate(input, from, to) {
     }
 
     toTranslate.forEach(el => {
-        const textToTranslate = el.text;
-
         const translatePromise = googleTranslate(
-            textToTranslate,
+            el.text,
             {
                 from,
                 to,
@@ -58,7 +56,7 @@ function translate(input, from, to) {
         ).then(res => {
             log(
                 'Translating ' +
-                chalk.yellow(textToTranslate) +
+                chalk.yellow(el.text) +
                 ' to ' +
                 chalk.green(res.text)
             );
@@ -70,9 +68,7 @@ function translate(input, from, to) {
     });
 
     return Promise.all(allPromises)
-        .then(() => convert.js2xml(result, {
-            spaces: 4
-        }))
+        .then(() => convert.js2xml(xlfStruct, { spaces: 4 }))
         .catch(e => {
             throw new Error(e);
         });
