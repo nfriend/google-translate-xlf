@@ -32,7 +32,28 @@ function translate(input, from, to) {
                 const target = cloneDeep(source);
                 target.name = 'target';
 
-                toTranslate.push(...target.elements.filter(el => el.type === 'text'))
+                target.elements.forEach(el => {
+                    if (el.type === 'text') {
+                        const translatePromise = googleTranslate(
+                            el.text,
+                            {
+                                from,
+                                to
+                            }
+                        ).then(res => {
+                            log(
+                                'Translating ' +
+                                chalk.yellow(el.text) +
+                                ' to ' +
+                                chalk.green(res.text)
+                            );
+
+                            el.text = res.text
+                        });
+
+                        allPromises.push(translatePromise);
+                    }
+                });
 
                 elem.elements.push(target);
             }
@@ -44,28 +65,6 @@ function translate(input, from, to) {
             queue.push(...elem.elements)
         };
     }
-
-    toTranslate.forEach(el => {
-        const translatePromise = googleTranslate(
-            el.text,
-            {
-                from,
-                to,
-                raw: true
-            }
-        ).then(res => {
-            log(
-                'Translating ' +
-                chalk.yellow(el.text) +
-                ' to ' +
-                chalk.green(res.text)
-            );
-
-            el.text = res.text
-        });
-
-        allPromises.push(translatePromise);
-    });
 
     return Promise.all(allPromises)
         .then(() => convert.js2xml(xlfStruct, { spaces: 4 }))
