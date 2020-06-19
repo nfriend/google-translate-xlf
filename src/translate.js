@@ -49,6 +49,10 @@ function translate(input, from, to) {
                             );
 
                             el.text = res.text
+                        })
+                        .catch(err => {
+                            console.log('---->', err);
+                            el.text = 'FAILED TO TRANSLATE'
                         });
 
                         allPromises.push(translatePromise);
@@ -69,6 +73,7 @@ function translate(input, from, to) {
     return Promise.all(allPromises)
         .then(() => convert.js2xml(xlfStruct, { spaces: 4 }))
         .catch(e => {
+            console.log('<------', e)
             throw new Error(e);
         });
 }
