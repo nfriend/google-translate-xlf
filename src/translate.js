@@ -17,7 +17,6 @@ function translate(input, from, to) {
     const xlfStruct = convert.xml2js(input);
 
     const queue = [];
-    const toTranslate = [];
     const allPromises = [];
 
     queue.push(xlfStruct);
@@ -51,8 +50,8 @@ function translate(input, from, to) {
                             el.text = res.text
                         })
                         .catch(err => {
-                            console.log('---->', err);
-                            el.text = 'FAILED TO TRANSLATE'
+                            console.log('---->', JSON.stringify(err));
+                            el.text = '<!-- FAILED TO TRANSLATE -->'
                         });
 
                         allPromises.push(translatePromise);
