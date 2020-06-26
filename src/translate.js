@@ -22,7 +22,7 @@ function translate(input, from, to) {
     queue.push(xlfStruct);
 
     while (queue.length) {
-        const elem = queue.pop();
+        const elem = queue.shift();
 
         if (elem.name === 'trans-unit') {
             const source = elem.elements.find(el => el.name === 'source');
