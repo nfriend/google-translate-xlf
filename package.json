@@ -33,17 +33,16 @@
     "translate-xlf": "./src/index.js"
   },
   "dependencies": {
-    "bluebird": "^3.5.1",
+    "@k3rn31p4nic/google-translate-api": "1.1.0",
+    "bottleneck": "^2.19.5",
     "chalk": "^2.4.1",
-    "google-translate-api": "^2.3.0",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.1",
-    "xml2js": "^0.4.19",
-    "yargs": "^11.0.0"
+    "lodash.clonedeep": "^4.5.0",
+    "xml-js": "^1.6.11",
+    "yargs": "^15.3.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.1.1",
+    "mocha": "^7.2.0",
     "proxyquire": "^2.0.1"
   }
 }

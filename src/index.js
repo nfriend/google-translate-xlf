@@ -3,14 +3,12 @@
 /* 
     For usage help, run "node index.js help"
 */
-
 const path = require('path');
 const chalk = require('chalk');
-const bluebird = require('bluebird');
-const moment = require('moment');
-const fs = bluebird.promisifyAll(require('fs'));
+const { readFileAsync, writeFileAsync } = require('./helpers/fs-async');
 const translate = require('./translate');
-const log = require('./log');
+const log = require('./helpers/log');
+const date = require('./helpers/date');
 
 // setup up the command line interface
 const argv = require('yargs')
@@ -62,27 +60,21 @@ const argv = require('yargs')
 // report how long the whole process took
 const startTime = Date.now();
 
-fs
-    // get the input .xlf file from the filesystem
-    .readFileAsync(path.resolve(argv.in))
-
+// get the input .xlf file from the filesystem
+readFileAsync(path.resolve(argv.in))
     // translate the file
     .then(xlf => {
-        return translate(xlf, argv.from, argv.to, argv.include, argv.exclude);
+        return translate(xlf.toString(), argv.from, argv.to, argv.include, argv.exclude);
     })
 
     // write the result to the output file
     .then(output => {
         // add a comment to the top of the file unless --comment = false
         if (argv.comment) {
-            const nowString = moment().format('MMMM Do YYYY, h:mm:ss a');
-
-            output =
-                `<!-- Translated on ${nowString} by google-translate-xlf:` +
-                ` https://github.com/nfriend/google-translate-xlf -->\n${output}`;
+            output = `<!-- Translated on ${date()} by google-translate-xlf: https://github.com/chekit/google-translate-xlf -->\n${output}`;
         }
 
-        return fs.writeFileAsync(path.resolve(argv.out), output);
+        return writeFileAsync(path.resolve(argv.out), output);
     })
 
     // write a cheery message to the console
@@ -90,11 +82,11 @@ fs
         const endTime = Date.now();
         log(
             chalk.green('✓') +
-                ' Finished translating ' +
-                argv.in +
-                ' in ' +
-                (endTime - startTime) +
-                'ms.'
+            ' Finished translating ' +
+            argv.in +
+            ' in ' +
+            (endTime - startTime) +
+            'ms.'
         );
     })
 
@@ -102,9 +94,10 @@ fs
     .catch(err => {
         log(
             chalk.red('X') +
-                ' Something went wrong while translating ' +
-                argv.in +
-                '!'
+            ' Something went wrong while translating ' +
+            argv.in +
+            '!'
         );
         log('' + err.stack);
     });
+
