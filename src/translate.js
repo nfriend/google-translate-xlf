@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const log = require('./helpers/log');
 const cloneDeep = require('lodash.clonedeep');
 const convert = require('xml-js');
+const Bottleneck = require('bottleneck/es5');
 
 /**
  * Translates an .xlf file from one language to another
@@ -15,14 +16,18 @@ const convert = require('xml-js');
  */
 function translate(input, from, to) {
     const xlfStruct = convert.xml2js(input);
+    const limiter = new Bottleneck({
+        maxConcurrent: 4,
+        minTime: 333,
+    });
 
-    const queue = [];
-    const allPromises = [];
+    const elementsQueue = [];
+    const targetQueue = [];
 
-    queue.push(xlfStruct);
+    elementsQueue.push(xlfStruct);
 
-    while (queue.length) {
-        const elem = queue.shift();
+    while (elementsQueue.length) {
+        const elem = elementsQueue.shift();
 
         if (elem.name === 'trans-unit') {
             const source = elem.elements.find(el => el.name === 'source');
@@ -32,29 +37,8 @@ function translate(input, from, to) {
                 target.name = 'target';
 
                 target.elements.forEach(el => {
-                    if (el.type === 'text') {
-                        const translatePromise = googleTranslate(
-                            el.text,
-                            {
-                                from,
-                                to
-                            }
-                        ).then(res => {
-                            log(
-                                'Translating ' +
-                                chalk.yellow(el.text) +
-                                ' to ' +
-                                chalk.green(res.text)
-                            );
-
-                            el.text = res.text
-                        })
-                        .catch(err => {
-                            console.log('---->', JSON.stringify(err));
-                            el.text = '<!-- FAILED TO TRANSLATE -->'
-                        });
-
-                        allPromises.push(translatePromise);
+                    if (el.type === 'text' && !el.text.match(/^\W+$/gi)) {
+                        targetQueue.push(el);
                     }
                 });
 
@@ -65,16 +49,39 @@ function translate(input, from, to) {
         }
 
         if (elem && elem.elements && elem.elements.length) {
-            queue.push(...elem.elements)
+            elementsQueue.push(...elem.elements)
         };
     }
+    
 
-    return Promise.all(allPromises)
+    return limiter.schedule(() => {
+        const allPromises = targetQueue.map(el => googleTranslate(
+            el.text,
+            {
+                from,
+                to
+            }
+        )
+            .then(res => {
+                log(
+                    'Translating ' +
+                    chalk.yellow(el.text) +
+                    ' to ' +
+                    chalk.green(res.text)
+                );
+
+                el.text = res.text
+            })
+            .catch(err => {
+                console.log('---->', JSON.stringify(err));
+                console.log('---->', err.stack);
+                el.text = '[WARN] Failed to translate -->'
+            })
+        );
+
+        return Promise.all(allPromises);
+    })
         .then(() => convert.js2xml(xlfStruct, { spaces: 4 }))
-        .catch(e => {
-            console.log('<------', e)
-            throw new Error(e);
-        });
 }
 
 module.exports = translate;
