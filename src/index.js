@@ -71,7 +71,7 @@ readFileAsync(path.resolve(argv.in))
     .then(output => {
         // add a comment to the top of the file unless --comment = false
         if (argv.comment) {
-            output = `<!-- Translated on ${date()} by google-translate-xlf: https://github.com/chekit/google-translate-xlf -->\n${output}`;
+            output = `<!-- Translated on ${date()} by xlf2xlf: https://github.com/chekit/xlf2xlf -->\n${output}`;
         }
 
         return writeFileAsync(path.resolve(argv.out), output);

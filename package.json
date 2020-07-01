@@ -30,7 +30,7 @@
   "homepage": "https://github.com/chekit/xlf2xlf#readme",
   "preferGlobal": true,
   "bin": {
-    "translate-xlf": "./src/index.js"
+    "xlf2xlf": "./src/index.js"
   },
   "dependencies": {
     "@k3rn31p4nic/google-translate-api": "1.0.5",

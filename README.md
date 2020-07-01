@@ -1,14 +1,14 @@
 
 ![XLF2XLF](./logo.png)
 
-# XLF2XLF (aka. google-translate-xlf)
+# XLF2XLF (ex. google-translate-xlf)
 A command-line utility to automatically translate .xlf translation files using Google Translate
 
 **DISCLAIMER**
 
-> This library was forked from https://github.com/nfriend/google-translate-xlf
+> This library was forked from https://github.com/nfriend/xlf2xlf
 
-> Some additions to package dependecies were made according to https://www.npmjs.com/package/google-translate-xlf-updated
+> Some additions to package dependecies were made according to https://www.npmjs.com/package/xlf2xlf-updated
 
 The main goal to fork and edit original tool was to preserve word and interpolation blocks order while translating original _.xlf_ file, as base library copied this interpolation blocks to the end of _target_ element.
 
@@ -21,10 +21,10 @@ Also most of redundant dependecies were removed, file and folder structure were 
 This is a command-line utility.  To install this utility, run:
 
 ```bash
-npm install -g google-translate-xlf
+npm install -g xlf2xlf
 ```
 
-This will install the utility globally so that it can be run from any location.  The executable installed by this module is `translate-xlf`.
+This will install the utility globally so that it can be run from any location. The executable installed by this module is `xlf2xlf`.
 
 ## Usage
 
@@ -53,7 +53,7 @@ translate-xlf help
 By default, a comment is prepended to the output file that looks like this:
 
 ```xml
-<!--  Translated on July 1 2020, 10:47:39 by google-translate-xlf: https://github.com/chekit/google-translate-xlf -->
+<!--  Translated on July 1 2020, 10:47:39 by xlf2xlf: https://github.com/chekit/xlf2xlf -->
 ```
 
 This behavior can be turned off by passing `--comment false`.
