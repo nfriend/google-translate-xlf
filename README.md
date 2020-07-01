@@ -1,5 +1,5 @@
 
-![XLF2XLF](./logo.png, "XLF2XLF")
+![XLF2XLF](./logo.png)
 
 # XLF2XLF (aka. google-translate-xlf)
 A command-line utility to automatically translate .xlf translation files using Google Translate
