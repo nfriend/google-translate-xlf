@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nfriend/google-translate-xlf.git"
+    "url": "git+https://github.com/chekit/google-translate-xlf.git"
   },
   "keywords": [
     "translate",
@@ -22,12 +22,12 @@
     "angular2",
     "ng"
   ],
-  "author": "Nathan Friend",
+  "author": "Anton Cherepov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nfriend/google-translate-xlf/issues"
+    "url": "https://github.com/chekit/google-translate-xlf/issues"
   },
-  "homepage": "https://github.com/nfriend/google-translate-xlf#readme",
+  "homepage": "https://github.com/chekit/google-translate-xlf#readme",
   "preferGlobal": true,
   "bin": {
     "translate-xlf": "./src/index.js"
