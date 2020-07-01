@@ -1,6 +1,6 @@
 {
-  "name": "google-translate-xlf",
-  "version": "0.2.3",
+  "name": "xlf2xlf",
+  "version": "0.0.1",
   "description": "A command-line utility to automatically translate .xlf translation files using Google Translate",
   "main": "./src/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chekit/google-translate-xlf.git"
+    "url": "git+https://github.com/chekit/xlf2xlf.git"
   },
   "keywords": [
     "translate",
@@ -25,9 +25,9 @@
   "author": "Anton Cherepov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chekit/google-translate-xlf/issues"
+    "url": "https://github.com/chekit/xlf2xlf/issues"
   },
-  "homepage": "https://github.com/chekit/google-translate-xlf#readme",
+  "homepage": "https://github.com/chekit/xlf2xlf#readme",
   "preferGlobal": true,
   "bin": {
     "translate-xlf": "./src/index.js"
