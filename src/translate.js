@@ -14,15 +14,19 @@ const Bottleneck = require('bottleneck/es5');
  * 
  * @returns {string}
  */
-function translate(input, from, to) {
+async function translate(input, from, to) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
-        maxConcurrent: 1,
-        minTime: 333,
+        // reservoir: 100,
+        // reservoirRefreshAmount: 100,
+        // reservoirRefreshInterval: 60 * 1000,
+
+        // maxConcurrent: 1,
+        minTime: 1000,
     });
 
     const elementsQueue = [];
-    const targetQueue = [];
+    const targetsQueue = [];
 
     elementsQueue.push(xlfStruct);
 
@@ -38,7 +42,7 @@ function translate(input, from, to) {
 
                 target.elements.forEach(el => {
                     if (el.type === 'text' && !el.text.match(/^\W+$/gi)) {
-                        targetQueue.push(el);
+                        targetsQueue.push(el);
                     }
                 });
 
@@ -52,36 +56,59 @@ function translate(input, from, to) {
             elementsQueue.push(...elem.elements)
         };
     }
-    
 
-    return limiter.schedule(() => {
-        const allPromises = targetQueue.map(el => googleTranslate(
-            el.text,
-            {
-                from,
-                to
-            }
-        )
-            .then(res => {
-                log(
-                    'Translating ' +
-                    chalk.yellow(el.text) +
-                    ' to ' +
-                    chalk.green(res.text)
-                );
+    const allPromises = targetsQueue.map((el) => limiter.schedule(() => getTextTranslation(el, from, to)));
 
-                el.text = res.text
-            })
-            .catch(err => {
-                console.log(`[ERROR] ${JSON.stringify(err)}`);
-                console.log('[TRACE]', err.stack);
-                el.text = '[WARN] Failed to translate'
-            })
+    await Promise.all(allPromises);
+
+    return convert.js2xml(xlfStruct, { spaces: 4 });
+
+    // Sequental Variant
+    // await targetsQueue
+    //     .reduce((pr, el) => {
+    //         return limiter.schedule(() => {
+    //             return pr.then(() => {
+    //                 return googleTranslate(el.text, {
+    //                     from,
+    //                     to,
+    //                 })
+    //                     .then((res) => {
+    //                         log(
+    //                             'Translating ' +
+    //                                 chalk.yellow(el.text) +
+    //                                 ' to ' +
+    //                                 chalk.green(res.text)
+    //                         );
+
+    //                         el.text = res.text;
+    //                     })
+    //                     .catch((err) => {
+    //                         console.log(`[ERROR] ${JSON.stringify(err)}`);
+    //                         console.log('[TRACE]', err.stack);
+    //                         el.text = '[WARN] Failed to translate';
+    //                     });
+    //             });
+    //         })
+    //     }, Promise.resolve());
+
+    // return convert.js2xml(xlfStruct, { spaces: 4 });
+}
+
+async function getTextTranslation(el, from, to) {
+    try {
+        const result = await googleTranslate(el.text, { from, to });
+        log(
+            'Translating ' +
+            chalk.yellow(el.text) +
+            ' to ' +
+            chalk.green(result.text)
         );
-
-        return Promise.all(allPromises);
-    })
-        .then(() => convert.js2xml(xlfStruct, { spaces: 4 }))
+        el.text = result.text;
+    } catch (err) {
+        console.log(`[ERROR] ${JSON.stringify(err)}`);
+        console.log('[TRACE]', err.stack);
+        el.text = '[WARN] Failed to translate';
+    }
 }
 
 module.exports = translate;
