@@ -17,7 +17,7 @@ const Bottleneck = require('bottleneck/es5');
 function translate(input, from, to) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
-        maxConcurrent: 4,
+        maxConcurrent: 1,
         minTime: 333,
     });
 
@@ -73,9 +73,9 @@ function translate(input, from, to) {
                 el.text = res.text
             })
             .catch(err => {
-                console.log('---->', JSON.stringify(err));
-                console.log('---->', err.stack);
-                el.text = '[WARN] Failed to translate -->'
+                console.log(`[ERROR] ${JSON.stringify(err)}`);
+                console.log('[TRACE]', err.stack);
+                el.text = '[WARN] Failed to translate'
             })
         );
 
