@@ -10,6 +10,12 @@ A command-line utility to automatically translate .xlf translation files using G
 
 > Some additions to package dependecies were made according to https://www.npmjs.com/package/google-translate-xlf-updated
 
+The main goal to fork this library was to preserve word and interpolation blocks order while translating original _.xlf_ file, as base library just copied interpolation blocks to the end of _target_ element.
+
+While making this improvements the original _translate.js_ file eas fully rewritten starting from library we are using to read and build object model of _.xlf_ to ending with how we are parsing object model tree itself and creating queue to translate. 
+
+Also most of redundant dependecies were removed.
+
 ## Installation
 
 This is a command-line utility.  To install this utility, run:
@@ -51,14 +57,6 @@ By default, a comment is prepended to the output file that looks like this:
 ```
 
 This behavior can be turned off by passing `--comment false`.
-
-## Improvements
-
-The main goal to fork this library was to preserve word and interpolation blocks order while translating original _.xlf_ file, as base library just copied interpolation blocks to the end of _target_ element.
-
-While making this improvements the original _translate.js_ file eas fully rewritten starting from library we are using to read and build object model of _.xlf_ to ending with how we are parsing object model tree itself and creating queue to translate. 
-
-Also most of redundant dependecies were removed.
 
 ## Developing
 
