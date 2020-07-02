@@ -16,8 +16,8 @@ const argv = require('yargs')
         'Translates all property values in an .xlf file from one language to another.'
     )
     .example(
-        'translate --in messages.xlf --out messages.hi.xlf --from en --to hi',
-        'Translate an .xlf file from English to Hindi'
+        'translate --in messages.xlf --out messages.hi.xlf --from en --to nl',
+        'Translate an .xlf file from English to Dutch'
     )
     .example(
         'translate -i messages.xlf -o messages.fr.xlf -f en -t fr',
@@ -27,47 +27,48 @@ const argv = require('yargs')
         alias: 'in',
         demand: true,
         describe: 'The input .xlf file to translate',
-        type: 'string'
+        type: 'string',
     })
     .option('o', {
         alias: 'out',
         demand: true,
         describe: 'The name of the translated output file',
-        type: 'string'
+        type: 'string',
     })
     .option('f', {
         alias: 'from',
         demand: true,
         describe: 'The language code of the input file',
-        type: 'string'
+        type: 'string',
     })
     .option('t', {
         alias: 'to',
         demand: true,
         describe: 'The language code to translate to',
-        type: 'string'
+        type: 'string',
     })
     .option('c', {
         alias: 'comment',
         demand: false,
         describe: 'Indicates if an XML comment should be prepended to the output file',
         type: 'boolean',
-        default: true
+        default: true,
     })
     .option('r', {
         alias: 'rate',
         demand: false,
         describe: 'Sets the rate limit for requests. Default is 500ms',
-        type: 'number'
+        type: 'number',
+        default: 0,
     })
     .option('s', {
         alias: 'skip',
         demand: false,
-        describe: 'Skips translating and add target tag with boilerplate text',
+        describe:
+            'Skips translating and adds only target tag with boilerplate text',
         type: 'boolean',
-        default: false
-    })    
-    .argv;
+        default: false,
+    }).argv;
 
 // start a timer so that we can
 // report how long the whole process took

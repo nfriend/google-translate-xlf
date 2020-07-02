@@ -41,7 +41,7 @@ xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to hi
 Or, if you don't like typing, you can use the abbreviated versions of the arguments:
 
 ```bash
-xlf2xlf -i messages.xlf -o messages.hi.xlf -f en -t hi
+xlf2xlf -i messages.xlf -o messages.hi.xlf -f en -t nl
 ```
 
 For more usage help, run:
