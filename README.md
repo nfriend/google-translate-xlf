@@ -35,19 +35,19 @@ If you are using [Angular 2+](https://angular.io/) and the [Angular CLI](https:/
 Say we have an `.xlf` file named `messages.xlf`.  Let's translate this file from English ("en") to Hindi ("hi") and save the translated file as `messages.hi.xlf`:
 
 ```bash
-translate-xlf --in messages.xlf --out messages.hi.xlf --from en --to hi
+xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to hi
 ```
 
 Or, if you don't like typing, you can use the abbreviated versions of the arguments:
 
 ```bash
-translate-xlf -i messages.xlf -o messages.hi.xlf -f en -t hi
+xlf2xlf -i messages.xlf -o messages.hi.xlf -f en -t hi
 ```
 
 For more usage help, run:
 
 ```bash
-translate-xlf help
+xlf2xlf help
 ```
 
 By default, a comment is prepended to the output file that looks like this:
@@ -60,7 +60,9 @@ This behavior can be turned off by passing `--comment false`.
 
 ## Developing
 
-The easiest way to develop on this module is to use test-driven development.  Unit tests can be run with `npm test`.  To automatically re-run the tests when you make changes to the files, run `npm run test:watch`.
+The easiest way to develop on this module is to use test-driven development.
+
+Unit tests can be run with `npm test`.  To automatically re-run the tests when you make changes to the files, run `npm run test:watch`.
 
 ## Translation
 

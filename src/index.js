@@ -50,11 +50,18 @@ const argv = require('yargs')
     .option('c', {
         alias: 'comment',
         demand: false,
-        describe:
-            'Indicates if an XML comment should be prepended to the output file',
+        describe: 'Indicates if an XML comment should be prepended to the output file',
         type: 'boolean',
         default: true
-    }).argv;
+    })
+    .option('r', {
+        alias: 'rate',
+        demand: false,
+        describe: 'Sets the rate limit for requests. Default is 500ms',
+        type: 'boolean',
+        default: 500
+    })
+    .argv;
 
 // start a timer so that we can
 // report how long the whole process took

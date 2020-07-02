@@ -1,11 +1,10 @@
 const expect = require('chai').expect;
 const proxyquire = require('proxyquire');
-const bluebird = require('bluebird');
-const xml2js = bluebird.promisifyAll(require('xml2js'));
+const convert = require('xml-js');
 
 // import the file to test and mock out its dependencies
 const translate = proxyquire('../src/translate', {
-    'google-translate-api': text => {
+    '@k3rn31p4nic/google-translate-api': text => {
         // this function simulates the Google Translate API.
         // all words will be translated to [word]_TRANSLATED, i.e:
         // "hello world" => "hello_TRANSLATED world_TRANSLATED"
@@ -18,11 +17,11 @@ const translate = proxyquire('../src/translate', {
 
         const translatedText = translatedWords.join(' ');
 
-        return bluebird.resolve({
+        return Promise.resolve({
             text: translatedText
         });
     },
-    './log': () => {
+    './helpers/log': () => {
         /* noop */
     }
 });
@@ -55,26 +54,24 @@ describe('translate', () => {
                     <body>
                         <trans-unit id="introductionHeader" datatype="html">
                             <source>Hello i18n!</source>
-                            <target>Hello_TRANSLATED i18n!_TRANSLATED</target>
                             <context-group purpose="location">
-                                <context context-type="sourcefile">app\app.component.ts</context>
-                                <context context-type="linenumber">4</context>
+                            <context context-type="sourcefile">app\app.component.ts</context>
+                            <context context-type="linenumber">4</context>
                             </context-group>
                             <note priority="1" from="description">An introduction header for this sample</note>
                             <note priority="1" from="meaning">User welcome</note>
+                            <target>Hello_TRANSLATED i18n!_TRANSLATED</target>
                         </trans-unit>
                     </body>
                 </file>
             </xliff>
         `;
 
-        return translate(input, 'from', 'to', [], [])
-            .then(output => {
-                return bluebird.all([
-                    xml2js.parseStringAsync(output),
-                    xml2js.parseStringAsync(expectedOutput)
-                ]);
-            })
+        return translate(input, 'en', 'en', [], [])
+            .then(output => [
+                convert.xml2js(output),
+                convert.xml2js(expectedOutput)
+            ])
             .then(([output, expectedOutput]) => {
                 expect(output).to.deep.equal(expectedOutput);
             });

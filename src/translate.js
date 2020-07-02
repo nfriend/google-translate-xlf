@@ -1,9 +1,11 @@
 const googleTranslate = require('@k3rn31p4nic/google-translate-api');
 const chalk = require('chalk');
-const log = require('./helpers/log');
 const cloneDeep = require('lodash.clonedeep');
 const convert = require('xml-js');
 const Bottleneck = require('bottleneck/es5');
+
+const log = require('./helpers/log');
+const match = require('./helpers/text-matcher');
 
 /**
  * Translates an .xlf file from one language to another
@@ -14,15 +16,11 @@ const Bottleneck = require('bottleneck/es5');
  * 
  * @returns {string}
  */
-async function translate(input, from, to) {
+async function translate(input, from, to, rate) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
-        // reservoir: 100,
-        // reservoirRefreshAmount: 100,
-        // reservoirRefreshInterval: 60 * 1000,
-
-        // maxConcurrent: 1,
-        minTime: 1000,
+        maxConcurrent: 4,
+        minTime: rate,
     });
 
     const elementsQueue = [];
@@ -41,7 +39,7 @@ async function translate(input, from, to) {
                 target.name = 'target';
 
                 target.elements.forEach(el => {
-                    if (el.type === 'text' && !el.text.match(/^\W+$/gi)) {
+                    if (el.type === 'text' && !match(el.text)) {
                         targetsQueue.push(el);
                     }
                 });
@@ -62,36 +60,6 @@ async function translate(input, from, to) {
     await Promise.all(allPromises);
 
     return convert.js2xml(xlfStruct, { spaces: 4 });
-
-    // Sequental Variant
-    // await targetsQueue
-    //     .reduce((pr, el) => {
-    //         return limiter.schedule(() => {
-    //             return pr.then(() => {
-    //                 return googleTranslate(el.text, {
-    //                     from,
-    //                     to,
-    //                 })
-    //                     .then((res) => {
-    //                         log(
-    //                             'Translating ' +
-    //                                 chalk.yellow(el.text) +
-    //                                 ' to ' +
-    //                                 chalk.green(res.text)
-    //                         );
-
-    //                         el.text = res.text;
-    //                     })
-    //                     .catch((err) => {
-    //                         console.log(`[ERROR] ${JSON.stringify(err)}`);
-    //                         console.log('[TRACE]', err.stack);
-    //                         el.text = '[WARN] Failed to translate';
-    //                     });
-    //             });
-    //         })
-    //     }, Promise.resolve());
-
-    // return convert.js2xml(xlfStruct, { spaces: 4 });
 }
 
 async function getTextTranslation(el, from, to) {
