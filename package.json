@@ -1,6 +1,6 @@
 {
   "name": "xlf2xlf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A command-line utility to automatically translate .xlf translation files using Google Translate",
   "main": "./src/index.js",
   "scripts": {
