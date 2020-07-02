@@ -6,9 +6,9 @@ A command-line utility to automatically translate .xlf translation files using G
 
 **DISCLAIMER**
 
-> This library was forked from https://github.com/nfriend/xlf2xlf
+> This library was forked from https://github.com/nfriend/google-translate-xlf
 
-> Some additions to package dependecies were made according to https://www.npmjs.com/package/xlf2xlf-updated
+> Some additions to package dependecies were made according to https://www.npmjs.com/package/google-translate-xlf-updated
 
 The main goal to fork and edit original tool was to preserve word and interpolation blocks order while translating original _.xlf_ file, as base library copied this interpolation blocks to the end of _target_ element.
 
