@@ -16,7 +16,7 @@ const match = require('./helpers/text-matcher');
  * 
  * @returns {string}
  */
-async function translate(input, from, to, rate) {
+async function translate(input, from, to, rate, skip) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
         maxConcurrent: 4,
@@ -40,7 +40,11 @@ async function translate(input, from, to, rate) {
 
                 target.elements.forEach(el => {
                     if (el.type === 'text' && !match(el.text)) {
-                        targetsQueue.push(el);
+                        if (skip) {
+                            el.text = '[INFO] Add your translation here'
+                        } else {
+                            targetsQueue.push(el);
+                        }
                     }
                 });
 
@@ -55,7 +59,9 @@ async function translate(input, from, to, rate) {
         };
     }
 
-    const allPromises = targetsQueue.map((el) => limiter.schedule(() => getTextTranslation(el, from, to)));
+    const allPromises = skip
+        ? []
+        : targetsQueue.map((el) => limiter.schedule(() => getTextTranslation(el, from, to, skip)));
 
     await Promise.all(allPromises);
 

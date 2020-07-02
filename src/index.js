@@ -58,9 +58,15 @@ const argv = require('yargs')
         alias: 'rate',
         demand: false,
         describe: 'Sets the rate limit for requests. Default is 500ms',
-        type: 'boolean',
-        default: 500
+        type: 'number'
     })
+    .option('s', {
+        alias: 'skip',
+        demand: false,
+        describe: 'Skips translating and add target tag with boilerplate text',
+        type: 'boolean',
+        default: false
+    })    
     .argv;
 
 // start a timer so that we can
@@ -71,7 +77,7 @@ const startTime = Date.now();
 readFileAsync(path.resolve(argv.in))
     // translate the file
     .then(xlf => {
-        return translate(xlf.toString(), argv.from, argv.to, argv.include, argv.exclude);
+        return translate(xlf.toString(), argv.from, argv.to, argv.rate, argv.skip);
     })
 
     // write the result to the output file
