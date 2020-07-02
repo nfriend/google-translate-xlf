@@ -50,14 +50,16 @@ const argv = require('yargs')
     .option('c', {
         alias: 'comment',
         demand: false,
-        describe: 'Indicates if an XML comment should be prepended to the output file',
+        describe:
+            'Indicates if an XML comment should be prepended to the output file',
         type: 'boolean',
         default: true,
     })
     .option('r', {
         alias: 'rate',
         demand: false,
-        describe: 'Sets the rate limit for requests. Default is 500ms',
+        describe:
+            'Sets the rate limit for requests. For more information see https://github.com/SGrondin/bottleneck#readme',
         type: 'number',
         default: 0,
     })
