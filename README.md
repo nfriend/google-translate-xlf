@@ -58,6 +58,30 @@ By default, a comment is prepended to the output file that looks like this:
 
 This behavior can be turned off by passing `--comment false`.
 
+## Messages
+
+Tool adds 2 kind of extra messages to final xlf file according to certain criterias: 
+
+1. If we are using `skip` option, there will be information messages inside target tags to ease spot of where translation should be placed.
+
+Message:
+```
+[INFO] Add your translation here
+```
+
+2. If there is any errors during quering the translation, there will be warning messages inside problematic target tags to ease spot where things went wrong.
+
+Message:
+```
+[WARN] Failed to translate
+```
+
+## Known issues
+
+The speed of quering / getting response is depends on network quality.
+
+Sometimes translation could end up with tons of errors like  `{"name":"HTTPError","statusCode":429,"statusMessage":"Too Many Requests"}`, in this case better to wait for some time before next iteration.
+
 ## Developing
 
 The easiest way to develop on this module is to use test-driven development.
