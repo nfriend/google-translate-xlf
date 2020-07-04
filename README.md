@@ -1,8 +1,8 @@
 ![Xlf2Xlf NPM](https://badge.fury.io/js/xlf2xlf.svg)
 
+# XLF2XLF (ex. google-translate-xlf)
 ![XLF2XLF](./logo.png)
 
-# XLF2XLF (ex. google-translate-xlf)
 A command-line utility to automatically translate .xlf translation files using Google Translate
 
 **DISCLAIMER**
