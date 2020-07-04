@@ -1,3 +1,4 @@
+![Xlf2Xlf NPM](https://badge.fury.io/js/xlf2xlf.svg)
 
 ![XLF2XLF](./logo.png)
 
