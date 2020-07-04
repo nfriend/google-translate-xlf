@@ -1,4 +1,4 @@
-![Xlf2Xlf NPM](https://badge.fury.io/js/xlf2xlf.svg)
+[![Xlf2Xlf NPM](https://badge.fury.io/js/xlf2xlf.svg)](https://www.npmjs.com/package/xlf2xlf)
 
 # XLF2XLF (ex. google-translate-xlf)
 ![XLF2XLF](./logo.png)
