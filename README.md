@@ -39,7 +39,7 @@ Say we have an `.xlf` file named `messages.xlf`.  Let's translate this file from
 xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to hi
 ```
 
-Or, if you don't like typing, you can use the abbreviated versions of the arguments:
+Or, if you don't like typing too much, you can use the abbreviated versions of the arguments:
 
 ```bash
 xlf2xlf -i messages.xlf -o messages.hi.xlf -f en -t nl
