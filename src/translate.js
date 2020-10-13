@@ -9,11 +9,11 @@ const match = require('./helpers/text-matcher');
 
 /**
  * Translates an .xlf file from one language to another
- * 
+ *
  * @param {string} input The source of the .xlf file, as a string
  * @param {string} from The language code of the input file
  * @param {string} to The language code of the output file
- * 
+ *
  * @returns {string}
  */
 async function translate(input, from, to, rate, skip) {
@@ -27,7 +27,8 @@ async function translate(input, from, to, rate, skip) {
     const targetsQueue = [];
 
     elementsQueue.push(xlfStruct);
-
+    console.log(input)
+    console.log(JSON.stringify(xlfStruct))
     while (elementsQueue.length) {
         const elem = elementsQueue.shift();
 
@@ -65,7 +66,13 @@ async function translate(input, from, to, rate, skip) {
 
     await Promise.all(allPromises);
 
-    return convert.js2xml(xlfStruct, { spaces: 4 });
+    return convert.js2xml(xlfStruct, {
+        spaces: 4,
+        // https://github.com/nashwaan/xml-js/issues/26#issuecomment-355620249
+        attributeValueFn: function (value) {
+            return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+    });
 }
 
 async function getTextTranslation(el, from, to) {
