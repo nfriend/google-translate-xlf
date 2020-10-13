@@ -27,8 +27,6 @@ async function translate(input, from, to, rate, skip) {
     const targetsQueue = [];
 
     elementsQueue.push(xlfStruct);
-    console.log(input)
-    console.log(JSON.stringify(xlfStruct))
     while (elementsQueue.length) {
         const elem = elementsQueue.shift();
 
