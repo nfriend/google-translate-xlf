@@ -50,8 +50,7 @@ const argv = require('yargs')
     .option('c', {
         alias: 'comment',
         demand: false,
-        describe:
-            'Indicates if an XML comment should be prepended to the output file',
+        describe: 'Indicates if an XML comment should be prepended to the output file',
         type: 'boolean',
         default: false,
     })
@@ -85,7 +84,7 @@ readFileAsync(path.resolve(argv.in))
 
     // write the result to the output file
     .then(output => {
-        // add a comment to the top of the file unless --comment = false
+        // add a comment to the top of the file if --comment = true
         if (argv.comment) {
             output = `<!-- Translated on ${date()} by xlf2xlf: https://github.com/chekit/xlf2xlf -->\n${output}`;
         }

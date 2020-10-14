@@ -13,7 +13,7 @@ A command-line utility to automatically translate .xlf translation files using G
 
 The main goal to fork and edit original tool was to preserve word and interpolation blocks order while translating original _.xlf_ file, as base library copied this interpolation blocks to the end of _target_ element.
 
-While making this improvements, the original _translate.js_ file eas fully rewritten starting from library we are using to read and build object model of _.xlf_ to ending with how we are parsing object model tree itself and creating queue to translate. 
+While making this improvements, the original _translate.js_ file eas fully rewritten starting from library we are using to read and build object model of _.xlf_ to ending with how we are parsing object model tree itself and creating queue to translate.
 
 Also most of redundant dependecies were removed, file and folder structure were redefined.
 
@@ -51,17 +51,17 @@ For more usage help, run:
 xlf2xlf help
 ```
 
-By default, a comment is prepended to the output file that looks like this:
+You can add a comment with information when file was generated. By default this information doesn't prepend.
+
+To turn on the comment we need to pass following `--comment true`.
 
 ```xml
 <!--  Translated on July 1 2020, 10:47:39 by xlf2xlf: https://github.com/chekit/xlf2xlf -->
 ```
 
-This behavior can be turned off by passing `--comment false`.
-
 ## Messages
 
-Tool adds 2 kind of extra messages to final xlf file according to certain criterias: 
+Tool adds 2 kind of extra messages to final xlf file according to certain criterias:
 
 1. If we are using `skip` option, there will be information messages inside target tags to ease spot of where translation should be placed.
 
