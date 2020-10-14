@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-/* 
+/*
     For usage help, run "node index.js help"
 */
 const path = require('path');
@@ -53,7 +53,7 @@ const argv = require('yargs')
         describe:
             'Indicates if an XML comment should be prepended to the output file',
         type: 'boolean',
-        default: true,
+        default: false,
     })
     .option('r', {
         alias: 'rate',
