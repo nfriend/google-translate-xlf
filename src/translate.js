@@ -30,6 +30,10 @@ async function translate(input, from, to, rate, skip) {
     while (elementsQueue.length) {
         const elem = elementsQueue.shift();
 
+        if (elem.name === 'file') {
+            elem.attributes['target-language'] = to;
+        }
+
         if (elem.name === 'trans-unit') {
             const source = elem.elements.find(el => el.name === 'source');
 
