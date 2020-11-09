@@ -8,7 +8,6 @@ const chalk = require('chalk');
 const { readFileAsync, writeFileAsync } = require('./helpers/fs-async');
 const translate = require('./translate');
 const log = require('./helpers/log');
-const date = require('./helpers/date');
 
 // setup up the command line interface
 const argv = require('yargs')
@@ -47,13 +46,6 @@ const argv = require('yargs')
         describe: 'The language code to translate to',
         type: 'string',
     })
-    .option('c', {
-        alias: 'comment',
-        demand: false,
-        describe: 'Indicates if an XML comment should be prepended to the output file',
-        type: 'boolean',
-        default: false,
-    })
     .option('r', {
         alias: 'rate',
         demand: false,
@@ -84,11 +76,6 @@ readFileAsync(path.resolve(argv.in))
 
     // write the result to the output file
     .then(output => {
-        // add a comment to the top of the file if --comment = true
-        if (argv.comment) {
-            output = `<!-- Translated on ${date()} by xlf2xlf: https://github.com/chekit/xlf2xlf -->\n${output}`;
-        }
-
         return writeFileAsync(path.resolve(argv.out), output);
     })
 

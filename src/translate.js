@@ -6,6 +6,7 @@ const Bottleneck = require('bottleneck/es5');
 
 const log = require('./helpers/log');
 const match = require('./helpers/text-matcher');
+const date = require('./helpers/date');
 
 /**
  * Translates an .xlf file from one language to another
@@ -32,6 +33,7 @@ async function translate(input, from, to, rate, skip) {
 
         if (elem.name === 'file') {
             elem.attributes['target-language'] = to;
+            elem.attributes['date'] = date();
         }
 
         if (elem.name === 'trans-unit') {

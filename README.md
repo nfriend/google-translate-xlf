@@ -51,14 +51,6 @@ For more usage help, run:
 xlf2xlf help
 ```
 
-You can add a comment with information when file was generated. By default this information doesn't prepend.
-
-To turn on the comment we need to pass following `--comment true`.
-
-```xml
-<!--  Translated on July 1 2020, 10:47:39 by xlf2xlf: https://github.com/chekit/xlf2xlf -->
-```
-
 ## Messages
 
 Tool adds 2 kind of extra messages to final xlf file according to certain criterias:
@@ -92,3 +84,7 @@ Unit tests can be run with `npm test`.  To automatically re-run the tests when y
 ## Translation
 
 This utility uses Google Translate's online API for its translations using this NPM package: https://www.npmjs.com/package/@k3rn31p4nic/google-translate-api
+
+## XLIF 1.2 Specification
+
+(http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html)[http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html]
