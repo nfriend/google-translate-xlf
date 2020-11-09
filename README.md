@@ -87,4 +87,4 @@ This utility uses Google Translate's online API for its translations using this 
 
 ## XLIF 1.2 Specification
 
-(http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html)[http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html]
+[http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html](http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html)
