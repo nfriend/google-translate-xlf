@@ -15,11 +15,11 @@ const argv = require('yargs')
         'Translates all property values in an .xlf file from one language to another.'
     )
     .example(
-        'translate --in messages.xlf --out messages.hi.xlf --from en --to nl',
+        'xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to nl',
         'Translate an .xlf file from English to Dutch'
     )
     .example(
-        'translate -i messages.xlf -o messages.fr.xlf -f en -t fr',
+        'xlf2xlf -i messages.xlf -o messages.fr.xlf -f en -t fr',
         'Translate an .xlf file from English to French'
     )
     .option('i', {
