@@ -26,6 +26,15 @@ npm install -g xlf2xlf
 ```
 
 This will install the utility globally so that it can be run from any location. The executable installed by this module is `xlf2xlf`.
+___
+
+You also could run library using **npx** utility.
+
+
+```bash
+npx xlf2xlf [options]
+```
+
 
 ## Usage
 

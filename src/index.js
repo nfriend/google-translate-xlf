@@ -12,7 +12,7 @@ const log = require('./helpers/log');
 // setup up the command line interface
 const argv = require('yargs')
     .usage(
-        'Translates all property values in an .xlf file from one language to another.'
+        'xlf2xlf [options] \nTranslates all property values in an .xlf file from one language to another.'
     )
     .example(
         'xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to nl',
