@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 const proxyquire = require('proxyquire');
 const convert = require('xml-js');
+const date = require('../src/helpers/date');
 
 // import the file to test and mock out its dependencies
 const translate = proxyquire('../src/translate', {
@@ -47,10 +48,12 @@ describe('translate', () => {
             </xliff>
         `;
 
+        const TEST_LN = 'en'
+
         const expectedOutput = `
             <?xml version="1.0" encoding="UTF-8" ?>
             <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-                <file source-language="en" datatype="plaintext" original="ng2.template">
+                <file source-language="en" datatype="plaintext" original="ng2.template" target-language="${TEST_LN}" date="${date()}">
                     <body>
                         <trans-unit id="introductionHeader" datatype="html">
                             <source>Hello i18n!</source>
@@ -67,7 +70,7 @@ describe('translate', () => {
             </xliff>
         `;
 
-        return translate(input, 'en', 'en', [], [])
+        return translate(input, 'en', TEST_LN, 0, false)
             .then(output => [
                 convert.xml2js(output),
                 convert.xml2js(expectedOutput)
