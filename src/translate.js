@@ -20,7 +20,7 @@ const date = require('./helpers/date');
 async function translate(input, from, to, rate, skip) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
-        maxConcurrent: 4,
+        maxConcurrent: 1,
         minTime: rate,
     });
 

@@ -60,6 +60,8 @@ For more usage help, run:
 xlf2xlf help
 ```
 
+> If the utility not installed globally, just use it via npx, e.g. `npx xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to hi`
+
 ## Messages
 
 Tool adds 2 kind of extra messages to final xlf file according to certain criterias:

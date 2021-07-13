@@ -52,7 +52,7 @@ const argv = require('yargs')
         describe:
             'Sets the rate limit for requests. For more information see https://github.com/SGrondin/bottleneck#readme',
         type: 'number',
-        default: 0,
+        default: 500,
     })
     .option('s', {
         alias: 'skip',
