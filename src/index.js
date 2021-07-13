@@ -50,7 +50,7 @@ const argv = require('yargs')
         alias: 'rate',
         demand: false,
         describe:
-            'Sets the rate limit for requests. For more information see https://github.com/SGrondin/bottleneck#readme',
+            'Sets the rate limit for requests in ms. For more information see https://github.com/SGrondin/bottleneck#readme',
         type: 'number',
         default: 500,
     })
