@@ -70,7 +70,7 @@ describe('translate', () => {
             </xliff>
         `;
 
-        return translate(input, 'en', TEST_LN, 0, false)
+        return translate(input, 'en', TEST_LN, 500, 1, false)
             .then(output => [
                 convert.xml2js(output),
                 convert.xml2js(expectedOutput)
