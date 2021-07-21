@@ -35,7 +35,6 @@ You also could run library using **npx** utility.
 npx xlf2xlf [options]
 ```
 
-
 ## Usage
 
 Before you begin, you will need an `.xlf` file to translate!
@@ -80,11 +79,28 @@ Message:
 [WARN] Failed to translate
 ```
 
+## Parameters
+
+| Option          | Default   | Mandatory   | Description                       |
+|-----------------|-----------|-------------|-----------------------------------|
+| i / in          | -         | true        | The input .xlf file to translate  |
+| o / out         | -         | true        | The name of the translated output file  |
+| f / from        | -         | true        | The language code of the input file  |
+| t / to          | -         | true        | The language code to translate to  |
+| r / rate        | 500       | false       | How long to wait after launching a job before launching another one in ms. For more information see [https://github.com/SGrondin/bottleneck#docs](https://github.com/SGrondin/bottleneck)  |
+| c / concurrent  | 4         | false       | How many jobs can be executing at the same time. For more information see [https://github.com/SGrondin/bottleneck#docs](https://github.com/SGrondin/bottleneck)   |
+| s / skip        | false     | false       | Skips translating and adds only target tag with boilerplate text `[INFO] Add your translation here`  |
+
 ## Known issues
 
-The speed of quering / getting response is depends on network quality.
+- The speed of quering / getting response is depends on network quality.
 
-Sometimes translation could end up with tons of errors like  `{"name":"HTTPError","statusCode":429,"statusMessage":"Too Many Requests"}`, in this case better to wait for some time before next iteration.
+- Sometimes translation could end up with tons of errors like  `{"name":"HTTPError","statusCode":429,"statusMessage":"Too Many Requests"}`, in this case better to wait for some time before next iteration.
+
+In case you are strating to get `{"name":"HTTPError","statusCode":429,"statusMessage":"Too Many Requests"}` you could do the following:
+- Wait a bit before Google Translate will release blocking you IP
+- Try to set bigger rate `npx xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to hi --rate 5000`, where rate is ms between queries. For more information on that property see [https://github.com/SGrondin/bottleneck](https://github.com/SGrondin/bottleneck#docs)
+- Try to limit rate and amount of concurrent requests `npx xlf2xlf --in messages.xlf --out messages.hi.xlf --from en --to hi --rate 10000 --concurrent 1`
 
 ## Developing
 

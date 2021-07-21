@@ -50,15 +50,23 @@ const argv = require('yargs')
         alias: 'rate',
         demand: false,
         describe:
-            'Sets the rate limit for requests in ms. For more information see https://github.com/SGrondin/bottleneck#readme',
+            'How long to wait after launching a job before launching another one in ms. For more information see https://github.com/SGrondin/bottleneck#docs',
         type: 'number',
         default: 500,
+    })
+    .option('c', {
+        alias: 'concurrent',
+        demand: false,
+        describe:
+            'How many jobs can be executing at the same time. For more information see https://github.com/SGrondin/bottleneck#docs',
+        type: 'number',
+        default: 4,
     })
     .option('s', {
         alias: 'skip',
         demand: false,
         describe:
-            'Skips translating and adds only target tag with boilerplate text',
+            'Skips translating and adds only target tag with boilerplate text inside',
         type: 'boolean',
         default: false,
     }).argv;
@@ -71,7 +79,7 @@ const startTime = Date.now();
 readFileAsync(path.resolve(argv.in))
     // translate the file
     .then(xlf => {
-        return translate(xlf.toString(), argv.from, argv.to, argv.rate, argv.skip);
+        return translate(xlf.toString(), argv.from, argv.to, argv.rate, argv.concurrent, argv.skip);
     })
 
     // write the result to the output file

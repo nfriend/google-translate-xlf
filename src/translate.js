@@ -17,11 +17,11 @@ const date = require('./helpers/date');
  *
  * @returns {string}
  */
-async function translate(input, from, to, rate, skip) {
+async function translate(input, from, to, minTime, maxConcurrent, skip) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
-        maxConcurrent: 1,
-        minTime: rate,
+        maxConcurrent,
+        minTime
     });
 
     const elementsQueue = [];
@@ -46,7 +46,7 @@ async function translate(input, from, to, rate, skip) {
                 target.elements.forEach(el => {
                     if (el.type === 'text' && !match(el.text)) {
                         if (skip) {
-                            el.text = '[INFO] Add your translation here'
+                            el.text = '[INFO] Add your translation here';
                         } else {
                             targetsQueue.push(el);
                         }
