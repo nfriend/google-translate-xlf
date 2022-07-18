@@ -1,4 +1,4 @@
-const googleTranslate = require('@k3rn31p4nic/google-translate-api');
+const googleTranslate = require('@vitalets/google-translate-api');
 const chalk = require('chalk');
 const cloneDeep = require('lodash.clonedeep');
 const convert = require('xml-js');
@@ -21,7 +21,7 @@ async function translate(input, from, to, minTime, maxConcurrent, skip) {
     const xlfStruct = convert.xml2js(input);
     const limiter = new Bottleneck({
         maxConcurrent,
-        minTime
+        minTime,
     });
 
     const elementsQueue = [];
@@ -37,13 +37,13 @@ async function translate(input, from, to, minTime, maxConcurrent, skip) {
         }
 
         if (elem.name === 'trans-unit') {
-            const source = elem.elements.find(el => el.name === 'source');
+            const source = elem.elements.find((el) => el.name === 'source');
 
             if (source) {
                 const target = cloneDeep(source);
                 target.name = 'target';
 
-                target.elements.forEach(el => {
+                target.elements.forEach((el) => {
                     if (el.type === 'text' && !match(el.text)) {
                         if (skip) {
                             el.text = '[INFO] Add your translation here';
@@ -60,13 +60,15 @@ async function translate(input, from, to, minTime, maxConcurrent, skip) {
         }
 
         if (elem && elem.elements && elem.elements.length) {
-            elementsQueue.push(...elem.elements)
-        };
+            elementsQueue.push(...elem.elements);
+        }
     }
 
     const allPromises = skip
         ? []
-        : targetsQueue.map((el) => limiter.schedule(() => getTextTranslation(el, from, to, skip)));
+        : targetsQueue.map((el) =>
+              limiter.schedule(() => getTextTranslation(el, from, to, skip))
+          );
 
     await Promise.all(allPromises);
 
@@ -75,7 +77,7 @@ async function translate(input, from, to, minTime, maxConcurrent, skip) {
         // https://github.com/nashwaan/xml-js/issues/26#issuecomment-355620249
         attributeValueFn: function (value) {
             return value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        }
+        },
     });
 }
 
@@ -84,9 +86,9 @@ async function getTextTranslation(el, from, to) {
         const result = await googleTranslate(el.text, { from, to });
         log(
             'Translating ' +
-            chalk.yellow(el.text) +
-            ' to ' +
-            chalk.green(result.text)
+                chalk.yellow(el.text) +
+                ' to ' +
+                chalk.green(result.text)
         );
         el.text = result.text;
     } catch (err) {

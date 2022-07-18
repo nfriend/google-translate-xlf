@@ -33,7 +33,7 @@
     "xlf2xlf": "./src/index.js"
   },
   "dependencies": {
-    "@k3rn31p4nic/google-translate-api": "1.0.5",
+    "@vitalets/google-translate-api": "^8.0.0",
     "bottleneck": "2.19.5",
     "chalk": "2.4.1",
     "lodash.clonedeep": "4.5.0",
